@@ -1,0 +1,171 @@
+package class_projects.cs449_project;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.paint.Color;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Line;
+import java.io.IOException;
+
+import javafx.scene.layout.Region;
+import javafx.scene.Parent;
+import javafx.scene.Node;
+import javafx.scene.text.Text;
+import net.synedra.validatorfx.Check;
+
+
+public class FinalProject extends Application {
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("SOS Game");
+
+        Text gameTitle = new Text("SOS");
+        gameTitle.setX(100);
+        gameTitle.setY(30);
+
+        ToggleGroup gameType = new ToggleGroup();
+
+
+        RadioButton simpleGame = new RadioButton("Simple game");
+        simpleGame.setLayoutX(135);
+        simpleGame.setLayoutY(17);
+        simpleGame.setToggleGroup(gameType);
+        simpleGame.setSelected(true);
+        RadioButton generalGame = new RadioButton("General game");
+        generalGame.setLayoutX(245);
+        generalGame.setLayoutY(17);
+        generalGame.setToggleGroup(gameType);
+
+        Text blue = new Text("Blue player");
+        blue.setX(20);
+        blue.setY(90);
+
+        ToggleGroup bluePlayerType = new ToggleGroup();
+
+        RadioButton bHuman = new RadioButton("Human");
+        bHuman.setLayoutX(20);
+        bHuman.setLayoutY(110);
+        bHuman.setToggleGroup(bluePlayerType);
+        bHuman.setSelected(true);
+        RadioButton bComp = new RadioButton("Computer");
+        bComp.setLayoutX(20);
+        bComp.setLayoutY(170);
+        bComp.setToggleGroup(bluePlayerType);
+
+        ToggleGroup blueSelection = new ToggleGroup();
+
+        RadioButton blueS = new RadioButton("S");
+        blueS.setLayoutX(40);
+        blueS.setLayoutY(130);
+        blueS.setToggleGroup(blueSelection);
+        blueS.setSelected(true);
+        RadioButton blueO = new RadioButton("O");
+        blueO.setLayoutX(40);
+        blueO.setLayoutY(150);
+        blueO.setToggleGroup(blueSelection);
+
+        Text red = new Text("Red player");
+        red.setX(355);
+        red.setY(90);
+
+        ToggleGroup redPlayerType = new ToggleGroup();
+
+        RadioButton rHuman = new RadioButton("Human");
+        rHuman.setLayoutX(355);
+        rHuman.setLayoutY(110);
+        rHuman.setToggleGroup(redPlayerType);
+        rHuman.setSelected(true);
+        RadioButton rComp = new RadioButton("Computer");
+        rComp.setLayoutX(355);
+        rComp.setLayoutY(170);
+        rComp.setToggleGroup(redPlayerType);
+
+        ToggleGroup redSelection = new ToggleGroup();
+
+        RadioButton redS = new RadioButton("S");
+        redS.setLayoutX(375);
+        redS.setLayoutY(130);
+        redS.setToggleGroup(redSelection);
+        redS.setSelected(true);
+        RadioButton redO = new RadioButton("O");
+        redO.setLayoutX(375);
+        redO.setLayoutY(150);
+        redO.setToggleGroup(redSelection);
+
+        CheckBox recordGame = new CheckBox("Record game");
+        recordGame.setLayoutX(20);
+        recordGame.setLayoutY(235);
+
+        Text turn = new Text("Current turn: blue or red");
+        turn.setX(160);
+        turn.setY(248);
+
+        Button replay = new Button("Replay");
+        replay.setLayoutX(355);
+        replay.setLayoutY(200);
+        replay.setPrefWidth(80);
+        Button newGame = new Button("New Game");
+        newGame.setLayoutX(355);
+        newGame.setLayoutY(230);
+        newGame.setPrefWidth(80);
+
+
+        GridPane pane = new GridPane();
+        for (int i = 0; i < 7; i++) {
+            for (int j = 0; j < 7; j++) {
+                pane.add(new Button("  "), 0, j);
+                pane.add(new Button("  "), 1, j);
+                pane.add(new Button("  "), 2, j);
+                pane.add(new Button("  "), 3, j);
+                pane.add(new Button("  "), 4, j);
+                pane.add(new Button("  "), 5, j);
+                pane.add(new Button("  "), 6, j);
+                pane.add(new Button("  "), 7, j);
+            }
+        }
+
+        pane.setLayoutX(135);
+        pane.setLayoutY(50);
+        Group group = new Group();
+
+
+        group.getChildren().add(gameTitle);
+        group.getChildren().add(simpleGame);
+        group.getChildren().add(generalGame);
+
+        group.getChildren().add(blue);
+        group.getChildren().add(bHuman);
+        group.getChildren().add(bComp);
+        group.getChildren().add(blueS);
+        group.getChildren().add(blueO);
+
+        group.getChildren().add(red);
+        group.getChildren().add(rHuman);
+        group.getChildren().add(rComp);
+        group.getChildren().add(redS);
+        group.getChildren().add(redO);
+
+        group.getChildren().add(pane);
+        group.getChildren().add(recordGame);
+        group.getChildren().add(turn);
+        group.getChildren().add(replay);
+        group.getChildren().add(newGame);
+
+        Scene scene = new Scene(group, 450, 265);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch();
+    }
+}
+
